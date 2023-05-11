@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ECOMMERCEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Mstr_categories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pid" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="Crd" Type="datetime" />
+    <Property Name="Crdby" Type="int" />
+    <Property Name="Lmd" Type="datetime" />
+    <Property Name="LmdBy" Type="int" />
+  </EntityType>
+  <EntityType Name="Mstr_Login">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="100" />
+    <Property Name="Password" Type="varchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="Crd" Type="datetime" />
+    <Property Name="CrdBy" Type="int" />
+    <Property Name="Lmd" Type="datetime" />
+    <Property Name="LmdBy" Type="int" />
+  </EntityType>
+  <EntityContainer Name="ECOMMERCEModelStoreContainer">
+    <EntitySet Name="Mstr_categories" EntityType="Self.Mstr_categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mstr_Login" EntityType="Self.Mstr_Login" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "ProType";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Product Add</h5>
+
+        <!-- No Labels Form -->
+        <form class="row g-3">
+            <div class="col-md-12">
+                <input type="text" id="txtname" class="form-control" placeholder="Product Type Name">
+            </div>
+            <div class="text-center">
+                <button type="button" id="btnsave" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+        </form><!-- End No Labels Form -->
+
+    </div>
+</div>
+@* To view product *@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Product List</h5>
+
+        <!-- Table with hoverable rows -->
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Add Date</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                
+              
+            </tbody>
+        </table>
+        <!-- End Table with hoverable rows -->
+
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        bindtype();
+    })
+
+    $('#btnsave').click(function () {
+                var name = $('#txtname').val();
+                $.ajax({
+                    type: 'post',
+                    url: '/Admin/SaveCatagory',
+                    data: { Name: name },
+                    success: function (data) {
+                        bindtype();
+                    }
+
+                })
+            })
+
+
+</script>
+
+<script>
+    function bindtype() {
+        $.ajax({
+            type: 'post',
+            url: '/Admin/BindProTypeLst',
+            success: function (data) {
+                $('#tbody').html('');
+                $.each(data, function (i, item) {
+                    var tr = '<tr><td>' + i + '</td><td>' + item.Name + '</td><td>' + item.Crd + '</td><td>Edit/Delete</td></tr>';
+                    $('#tbody').append(tr);
+                })
+            }
+
+        })
+    }
+</script>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ECOMMERCEModelStoreContainer" CdmEntityContainer="ECOMMERCEEntities">
+    <EntitySetMapping Name="Mstr_Login">
+      <EntityTypeMapping TypeName="ECOMMERCEModel.Mstr_Login">
+        <MappingFragment StoreEntitySet="Mstr_Login">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Crd" ColumnName="Crd" />
+          <ScalarProperty Name="CrdBy" ColumnName="CrdBy" />
+          <ScalarProperty Name="Lmd" ColumnName="Lmd" />
+          <ScalarProperty Name="LmdBy" ColumnName="LmdBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mstr_categories">
+      <EntityTypeMapping TypeName="ECOMMERCEModel.Mstr_categories">
+        <MappingFragment StoreEntitySet="Mstr_categories">
+          <ScalarProperty Name="LmdBy" ColumnName="LmdBy" />
+          <ScalarProperty Name="Lmd" ColumnName="Lmd" />
+          <ScalarProperty Name="Crdby" ColumnName="Crdby" />
+          <ScalarProperty Name="Crd" ColumnName="Crd" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Pid" ColumnName="Pid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
