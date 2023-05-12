@@ -19,6 +19,10 @@ namespace NewEcommerc.Controllers
         {
             return View();
         }
+        public ActionResult SubCategory()
+        {
+            return View();
+        }
         public JsonResult SaveCatagory(string Name,string Pid)
         {
             bool result = false;
@@ -61,5 +65,12 @@ namespace NewEcommerc.Controllers
             List<Mstr_categories> lst = db.Mstr_categories.Where(x => typeIds.Contains((int)x.Pid)).ToList();
             return Json(lst, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult BindCategoryByPid(int Pid)
+        {
+            MainPageData main = new MainPageData();
+
+            return Json(main.GetAllCategoriesByPId(Pid), JsonRequestBehavior.AllowGet);
+        }
+        
     }
 }
