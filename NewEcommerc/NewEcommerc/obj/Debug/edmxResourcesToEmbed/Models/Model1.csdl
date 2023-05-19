@@ -18,6 +18,7 @@
   <EntityContainer Name="ECOMMERCEEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Mstr_Login" EntityType="Self.Mstr_Login" />
     <EntitySet Name="Mstr_categories" EntityType="ECOMMERCEModel.Mstr_categories" />
+    <EntitySet Name="Products" EntityType="ECOMMERCEModel.Product" />
   </EntityContainer>
   <EntityType Name="Mstr_categories">
     <Key>
@@ -26,6 +27,29 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Pid" Type="Int32" />
     <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="Crd" Type="DateTime" Precision="3" />
+    <Property Name="Crdby" Type="Int32" />
+    <Property Name="Lmd" Type="DateTime" Precision="3" />
+    <Property Name="LmdBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProId" />
+    </Key>
+    <Property Name="ProId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="productName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Qty" Type="Int32" />
+    <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TableDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="price" Type="Int32" />
+    <Property Name="MainImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Images" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="rating" Type="Int32" />
+    <Property Name="ProType" Type="Int32" />
+    <Property Name="ProCat" Type="Int32" />
+    <Property Name="ProSubCat" Type="Int32" />
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="IsDelete" Type="Boolean" />
     <Property Name="Crd" Type="DateTime" Precision="3" />

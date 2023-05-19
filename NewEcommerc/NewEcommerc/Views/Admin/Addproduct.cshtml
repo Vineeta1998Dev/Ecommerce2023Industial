@@ -1,0 +1,260 @@
+﻿@model NewEcommerc.Models.Product
+
+@{
+    ViewBag.Title = "Addproduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Addproduct</h2>
+
+    
+<div class="form-horizontal">
+    <h4>Product</h4>
+    <hr />
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Multi Columns Form</h5>
+
+            <!-- Multi Columns Form -->
+
+            <form class="row g-3">
+
+                <div class="col-md-4">
+                    <label for="inputState" class="form-label">Type</label>
+                    <select name="ProType" id="DDLType" class="form-control">
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="inputState" class="form-label">Category</label>
+                    <select name="ProCat" id="DDLCategory" class="form-control">
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="inputState" class="form-label">Sub Category</label>
+                    <select name="ProSubCat" id="DDLSubCat" class="form-control">
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <label for="inputState" class="form-label">Product Name</label>
+                    <input type="text" id="productName" name="productName" class="form-control" />
+                </div>
+                <div class="col-md-4">
+                    <label for="inputState" class="form-label">Maserment</label>
+                    <select name="Units" id="Units" class="form-control">
+                        <option value="1">KG(Kilogram)</option>
+                        <option value="2">Ltr(Liter)</option>
+                        <option value="3">Pices</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="inputState" class="form-label">Quantity</label>
+                    <input type="number" id="Qty" name="Qty" class="form-control" />
+                </div>
+                <div class="col-md-4">
+                    <label for="inputState" class="form-label">Price</label>
+                    <input type="number" id="Price" name="Price" class="form-control" />
+                </div>
+                <div class="col-md-12">
+                    <label for="inputState" class="form-label">Image Upload</label>
+                    @Html.Partial("~/Views/Shared/ImageUpload.cshtml")
+                </div>
+
+            </form><!-- End Multi Columns Form -->
+
+        </div>
+    </div>
+
+   
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ProId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ProId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ProId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.productName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.productName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.productName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Qty, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Qty, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Qty, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Details, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TableDetails, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TableDetails, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TableDetails, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MainImage, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.MainImage, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MainImage, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Images, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Images, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.rating, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.rating, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.rating, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsDelete, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.IsDelete, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.IsDelete, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Crd, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Crd, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Crd, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Crdby, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Crdby, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Crdby, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Lmd, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Lmd, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Lmd, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LmdBy, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.LmdBy, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.LmdBy, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        bindtype();
+        $('#DDLType').change(function () {
+            var type = $('#DDLType').val();
+            bindCategoryByTypeId(type);
+        })
+        $('#DDLCategory').change(function () {
+            var type = $('#DDLCategory').val();
+            bindSubCategoryByCatId(type);
+        })
+    })
+
+
+    function bindtype() {
+        $.ajax({
+            type: 'post',
+            url: '/Admin/BindProTypeLst',
+            success: function (data) {
+                $('#DDLType').html('');
+                $.each(data, function (i, item) {
+                    var tr = '<option value=' + item.Id + '>' + item.Name + '</option>';
+                    $('#DDLType').append(tr);
+                })
+            }
+
+        })
+    }
+   
+    function bindCategoryByTypeId(id) {
+        $.ajax({
+            type: 'post',
+            url: '/Admin/BindCategoryByPid',
+            data: { Pid: id },
+            success: function (data) {
+                $('#DDLCategory').html('');
+                $.each(data, function (i, item) {
+                    var tr = '<option value=' + item.Id + '>' + item.Name + '</option>';
+                    $('#DDLCategory').append(tr);
+                })
+            }
+
+        })
+    }
+    
+
+    function bindSubCategoryByCatId(id) {
+        $.ajax({
+            type: 'post',
+            url: '/Admin/BindCategoryByPid',
+            data: { Pid: id },
+            success: function (data) {
+                $('#DDLSubCat').html('');
+                $.each(data, function (i, item) {
+                    var tr = '<option value=' + item.Id + '>' + item.Name + '</option>';
+                    $('#DDLSubCat').append(tr);
+                })
+            }
+
+        })
+    }
+</script>

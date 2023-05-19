@@ -59,6 +59,7 @@
 <script>
     $(document).ready(function () {
         bindDDLtype();
+        BindSubCategoryLst();
         $('#DDLType').change(function () {
             var type = $('#DDLType').val();
             bindCatagory(type);
@@ -68,13 +69,14 @@
     $('#btnsave').click(function () {
         var name = $('#txtname').val();
         var type = $('#DDLType').val();
-
+        var Category = $('#DDLCategory').val();
+        
                 $.ajax({
                     type: 'post',
-                    url: '/Admin/SaveCatagory',
-                    data: { Name: name,Pid:type },
+                    url: '/Admin/SaveSubCatagory',
+                    data: { Name: name, TypeId: type, CatId: Category},
                     success: function (data) {
-                        bindCatagory();
+                        BindSubCategoryLst();
                     }
 
                 })
@@ -109,6 +111,20 @@
                 $.each(data, function (i, item) {
                     var tr = '<option value=' + item.Id + '>' + item.Name + '</option>';
                     $('#DDLCategory').append(tr);
+                })
+            }
+
+        })
+    }
+    function BindSubCategoryLst() {
+        $.ajax({
+            type: 'post',
+            url: '/Admin/BindSubCategoryLst',
+            success: function (data) {
+                $('#tbody').html('');
+                $.each(data, function (i, item) {
+                    var tr = '<tr><td>' + i + '</td><td>' + item.Name + '</td><td>' + item.Crd + '</td><td>Edit/Delete</td></tr>';
+                    $('#tbody').append(tr);
                 })
             }
 

@@ -32,5 +32,29 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="ECOMMERCEModel.Product">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="LmdBy" ColumnName="LmdBy" />
+          <ScalarProperty Name="Lmd" ColumnName="Lmd" />
+          <ScalarProperty Name="Crdby" ColumnName="Crdby" />
+          <ScalarProperty Name="Crd" ColumnName="Crd" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ProSubCat" ColumnName="ProSubCat" />
+          <ScalarProperty Name="ProCat" ColumnName="ProCat" />
+          <ScalarProperty Name="ProType" ColumnName="ProType" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="Images" ColumnName="Images" />
+          <ScalarProperty Name="MainImage" ColumnName="MainImage" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="TableDetails" ColumnName="TableDetails" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
+          <ScalarProperty Name="ProId" ColumnName="ProId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

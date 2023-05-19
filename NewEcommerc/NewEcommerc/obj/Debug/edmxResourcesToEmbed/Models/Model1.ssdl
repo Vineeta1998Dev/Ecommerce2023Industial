@@ -29,8 +29,32 @@
     <Property Name="Lmd" Type="datetime" />
     <Property Name="LmdBy" Type="int" />
   </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProId" />
+    </Key>
+    <Property Name="ProId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="productName" Type="varchar" MaxLength="200" />
+    <Property Name="Qty" Type="int" />
+    <Property Name="Details" Type="varchar(max)" />
+    <Property Name="TableDetails" Type="varchar(max)" />
+    <Property Name="price" Type="int" />
+    <Property Name="MainImage" Type="varchar(max)" />
+    <Property Name="Images" Type="varchar(max)" />
+    <Property Name="rating" Type="int" />
+    <Property Name="ProType" Type="int" />
+    <Property Name="ProCat" Type="int" />
+    <Property Name="ProSubCat" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="Crd" Type="datetime" />
+    <Property Name="Crdby" Type="int" />
+    <Property Name="Lmd" Type="datetime" />
+    <Property Name="LmdBy" Type="int" />
+  </EntityType>
   <EntityContainer Name="ECOMMERCEModelStoreContainer">
     <EntitySet Name="Mstr_categories" EntityType="Self.Mstr_categories" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Mstr_Login" EntityType="Self.Mstr_Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>
