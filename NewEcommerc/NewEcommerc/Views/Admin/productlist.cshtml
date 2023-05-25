@@ -1,0 +1,78 @@
+﻿@model IEnumerable<NewEcommerc.Models.Product>
+
+@{
+    ViewBag.Title = "productlist";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>productlist</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.productName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Details)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TableDetails)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MainImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rating)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.Crd)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.productName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Qty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Details)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TableDetails)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MainImage)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Crd)
+        </td>
+       
+    </tr>
+}
+
+</table>

@@ -1,6 +1,7 @@
 ﻿using NewEcommerc.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -114,6 +115,61 @@ namespace NewEcommerc.Controllers
             return View();
         }
 
+        public JsonResult SaveProduct(Product pro)
+        {
+            string msg = "Product No Saved!";
+            if (pro.ProId != 0)
+            {
+
+            }
+            else
+            {
+                pro.Crd = DateTime.Now;
+                pro.Crdby = 1;
+                pro.IsActive = true;
+                pro.IsDelete = false;
+                db.Products.Add(pro);
+                db.SaveChanges();
+                msg = "Product Saved.";
+            }
+            return Json(msg, JsonRequestBehavior.AllowGet);
+        }
+        
+        public ActionResult productlist()
+        {
+
+            return View(db.Products.ToList());
+        }
         #endregion
+        [HttpPost]
+        public ActionResult UploadFiles()
+        {
+            if (Request.Files.Count > 0)
+            {
+                string finalimgnams = "";
+                try
+                {
+                    HttpFileCollectionBase files = Request.Files;
+                    for (int i = 0; i < files.Count; i++)
+                    {
+                        HttpPostedFileBase file = files[i];
+                        finalimgnams += file.FileName + ",";
+                        string fname;
+                        fname = Path.Combine(Server.MapPath("~/Uploads/"), file.FileName);
+                        file.SaveAs(fname);
+                    }
+                    finalimgnams = finalimgnams.Trim(',');
+                    return Json(finalimgnams, JsonRequestBehavior.AllowGet);
+                }
+                catch (Exception ex)
+                {
+                    return Json("Error occurred. Error details: " + ex.Message);
+                }
+            }
+            else
+            {
+                return Json("No files selected.");
+            }
+        }
     }
 }

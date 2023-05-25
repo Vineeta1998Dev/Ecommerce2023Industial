@@ -4,9 +4,85 @@
     ViewBag.Title = "Addproduct";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<style>
+    .preview-images-zone {
+        width: 100%;
+        border: 1px solid #ddd;
+        min-height: 180px;
+        /* display: flex; */
+        padding: 5px 5px 0px 5px;
+        position: relative;
+        overflow: auto;
+    }
 
-<h2>Addproduct</h2>
+        .preview-images-zone > .preview-image:first-child {
+            height: 185px;
+            width: 185px;
+            position: relative;
+            margin-right: 5px;
+        }
 
+        .preview-images-zone > .preview-image {
+            height: 90px;
+            width: 90px;
+            position: relative;
+            margin-right: 5px;
+            float: left;
+            margin-bottom: 5px;
+        }
+
+            .preview-images-zone > .preview-image > .image-zone {
+                width: 100%;
+                height: 100%;
+            }
+
+                .preview-images-zone > .preview-image > .image-zone > img {
+                    width: 100%;
+                    height: 100%;
+                }
+
+            .preview-images-zone > .preview-image > .tools-edit-image {
+                position: absolute;
+                z-index: 100;
+                color: #fff;
+                bottom: 0;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+                display: none;
+            }
+
+            .preview-images-zone > .preview-image > .image-cancel {
+                font-size: 18px;
+                position: absolute;
+                top: 0;
+                right: 0;
+                font-weight: bold;
+                margin-right: 10px;
+                cursor: pointer;
+                display: none;
+                z-index: 100;
+            }
+
+    .preview-image:hover > .image-zone {
+        cursor: move;
+        opacity: .5;
+    }
+
+    .preview-image:hover > .tools-edit-image,
+    .preview-image:hover > .image-cancel {
+        display: block;
+    }
+
+    .ui-sortable-helper {
+        width: 90px !important;
+        height: 90px !important;
+    }
+
+    .container {
+        padding-top: 50px;
+    }
+</style>
     
 <div class="form-horizontal">
     <h4>Product</h4>
@@ -17,7 +93,7 @@
 
             <!-- Multi Columns Form -->
 
-            <form class="row g-3">
+            <form class="row g-3" id="frmProduct">
 
                 <div class="col-md-4">
                     <label for="inputState" class="form-label">Type</label>
@@ -55,142 +131,43 @@
                     <input type="number" id="Price" name="Price" class="form-control" />
                 </div>
                 <div class="col-md-12">
-                    <label for="inputState" class="form-label">Image Upload</label>
-                    @Html.Partial("~/Views/Shared/ImageUpload.cshtml")
-                </div>
+                    <!-- input -->
+                    <div>
+                        <div class="mb-3 col-lg-12 mt-5">
+                            <!-- heading -->
+                            <h4 class="mb-3 h5">Product Images</h4>
 
+                            <!-- input -->
+                            <input type="hidden" name="Images" id="img" />
+                            <div class="dz-default dz-message d-block dropzone border-dashed rounded-2 dz-clickable">
+                                <fieldset class="form-group">
+                                    <a href="javascript:void(0)" onclick="$('#pro-image').click()">Upload Image</a>
+                                    <input type="file" id="pro-image" name="pro-image" style="display: none;" class="form-control" multiple>
+                                </fieldset>
+                                <div class="preview-images-zone">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- input -->
+                </div>
+                <div class="col-md-12">
+                    <label for="inputState" class="form-label">details</label>
+                    <input type="text" class="form-control" name="Details" />
+                </div>
+                <div class="col-md-12">
+                    <label for="inputState" class="form-label">Information</label>
+                    <input type="text" class="form-control" name="TableDetails" />
+                </div>
             </form><!-- End Multi Columns Form -->
 
         </div>
     </div>
 
-   
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ProId, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ProId, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ProId, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.productName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.productName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.productName, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Qty, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Qty, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Qty, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Details, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.TableDetails, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.TableDetails, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.TableDetails, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.MainImage, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.MainImage, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.MainImage, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Images, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Images, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.rating, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.rating, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.rating, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.IsDelete, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.IsDelete, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.IsDelete, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Crd, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Crd, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Crd, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Crdby, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Crdby, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Crdby, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Lmd, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Lmd, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Lmd, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.LmdBy, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.LmdBy, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.LmdBy, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="Create" id="btnSave" class="btn btn-info" />
         </div>
     </div>
 </div>
@@ -207,6 +184,7 @@
             var type = $('#DDLCategory').val();
             bindSubCategoryByCatId(type);
         })
+        $('#btnSave').click(function () {            var valdata = $("#frmProduct").serialize();            $.ajax({                type: 'post',                url: '/Admin/SaveProduct',                data: valdata,                success: function (data) {                    alert(data);                }            })        })
     })
 
 
@@ -257,4 +235,68 @@
 
         })
     }
+
+    $(document).ready(function () {
+        document.getElementById('pro-image').addEventListener('change', readImage, false);
+
+        $(".preview-images-zone").sortable();
+
+        $(document).on('click', '.image-cancel', function () {
+            let no = $(this).data('no');
+            $(".preview-image.preview-show-" + no).remove();
+        });
+
+    });
+
+    var num = 4;
+    function readImage() {
+        if (window.File && window.FileList && window.FileReader) {
+            var files = event.target.files; //FileList object
+            var output = $(".preview-images-zone");
+            var fileData = new FormData();
+            // Looping over all files and add it to FormData object
+            for (var i = 0; i < files.length; i++) {
+                fileData.append(files[i].name, files[i]);
+            }
+            $.ajax({
+                url: '/Admin/UploadFiles',
+                type: "POST",
+                contentType: false, // Not to set any content header
+                processData: false, // Not to process data
+                data: fileData,
+                success: function (result) {
+                    $('#img').val(result);
+                },
+                error: function (err) {
+                    alert(err.statusText);
+                }
+            });
+
+            for (let i = 0; i < files.length; i++) {
+                var file = files[i];
+                if (!file.type.match('image')) continue;
+
+                var picReader = new FileReader();
+
+                picReader.addEventListener('load', function (event) {
+                    var picFile = event.target;
+                    var html = '<div class="preview-image preview-show-' + num + '">' +
+                        '<div class="image-cancel" data-no="' + num + '">x</div>' +
+                        '<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '"></div>' +
+                        '<div class="tools-edit-image"><a href="javascript:void(0)" data-no="' + num + '" class="btn btn-light btn-edit-image">edit</a></div>' +
+                        '</div>';
+
+                    output.append(html);
+                    num = num + 1;
+                });
+
+                picReader.readAsDataURL(file);
+            }
+            $("#pro-image").val('');
+        }
+        else {
+            console.log('Browser not support');
+        }
+    }
+
 </script>
