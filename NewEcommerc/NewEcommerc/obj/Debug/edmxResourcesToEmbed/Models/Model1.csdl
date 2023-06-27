@@ -19,6 +19,11 @@
     <EntitySet Name="Mstr_Login" EntityType="Self.Mstr_Login" />
     <EntitySet Name="Mstr_categories" EntityType="ECOMMERCEModel.Mstr_categories" />
     <EntitySet Name="Products" EntityType="ECOMMERCEModel.Product" />
+    <EntitySet Name="CartsItems" EntityType="ECOMMERCEModel.CartsItem" />
+    <EntitySet Name="Customer_Info" EntityType="ECOMMERCEModel.Customer_Info" />
+    <EntitySet Name="Mstr_Cus_Add" EntityType="ECOMMERCEModel.Mstr_Cus_Add" />
+    <EntitySet Name="Order_Items" EntityType="ECOMMERCEModel.Order_Items" />
+    <EntitySet Name="Order_Tbl" EntityType="ECOMMERCEModel.Order_Tbl" />
   </EntityContainer>
   <EntityType Name="Mstr_categories">
     <Key>
@@ -50,6 +55,95 @@
     <Property Name="ProType" Type="Int32" />
     <Property Name="ProCat" Type="Int32" />
     <Property Name="ProSubCat" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="Crd" Type="DateTime" Precision="3" />
+    <Property Name="Crdby" Type="Int32" />
+    <Property Name="Lmd" Type="DateTime" Precision="3" />
+    <Property Name="LmdBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CartsItem">
+    <Key>
+      <PropertyRef Name="itemId" />
+    </Key>
+    <Property Name="itemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="proId" Type="Int32" />
+    <Property Name="devicesId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="qty" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="Crd" Type="DateTime" Precision="3" />
+    <Property Name="Crdby" Type="Int32" />
+    <Property Name="Lmd" Type="DateTime" Precision="3" />
+    <Property Name="LmdBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Customer_Info">
+    <Key>
+      <PropertyRef Name="CusId" />
+    </Key>
+    <Property Name="CusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoginID" Type="Int32" />
+    <Property Name="fname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="lname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="mob" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="Crd" Type="DateTime" Precision="3" />
+    <Property Name="CrdBy" Type="Int32" />
+    <Property Name="Lmd" Type="DateTime" Precision="3" />
+    <Property Name="LmdBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Mstr_Cus_Add">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cusId" Type="Int32" />
+    <Property Name="busi" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="zip" Type="Int64" />
+    <Property Name="state" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="country" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="city" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="add2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="add1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="fname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="lname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="Crd" Type="DateTime" Precision="3" />
+    <Property Name="Crdby" Type="Int32" />
+    <Property Name="Lmd" Type="DateTime" Precision="3" />
+    <Property Name="LmdBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Order_Items">
+    <Key>
+      <PropertyRef Name="itemId" />
+    </Key>
+    <Property Name="itemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="Int32" />
+    <Property Name="proId" Type="Int32" />
+    <Property Name="devicesId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="qty" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="Crd" Type="DateTime" Precision="3" />
+    <Property Name="Crdby" Type="Int32" />
+    <Property Name="Lmd" Type="DateTime" Precision="3" />
+    <Property Name="LmdBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Order_Tbl">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Customer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DateTIme" Type="DateTime" Precision="3" />
+    <Property Name="PaymentMethod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PaymentStatus" Type="Boolean" />
+    <Property Name="Amount" Type="Int64" />
+    <Property Name="OrderStatus" Type="Int32" />
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="IsDelete" Type="Boolean" />
     <Property Name="Crd" Type="DateTime" Precision="3" />

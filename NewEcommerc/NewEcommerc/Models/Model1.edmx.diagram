@@ -8,6 +8,11 @@
         <EntityTypeShape EntityType="ECOMMERCEModel.Mstr_Login" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ECOMMERCEModel.Mstr_categories" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="ECOMMERCEModel.Product" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ECOMMERCEModel.CartsItem" Width="1.5" PointX="3.375" PointY="4.75" />
+        <EntityTypeShape EntityType="ECOMMERCEModel.Customer_Info" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ECOMMERCEModel.Mstr_Cus_Add" Width="1.5" PointX="5.625" PointY="5.75" />
+        <EntityTypeShape EntityType="ECOMMERCEModel.Order_Items" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ECOMMERCEModel.Order_Tbl" Width="1.5" PointX="8.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

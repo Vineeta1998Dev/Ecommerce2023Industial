@@ -56,5 +56,99 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CartsItems">
+      <EntityTypeMapping TypeName="ECOMMERCEModel.CartsItem">
+        <MappingFragment StoreEntitySet="CartsItems">
+          <ScalarProperty Name="LmdBy" ColumnName="LmdBy" />
+          <ScalarProperty Name="Lmd" ColumnName="Lmd" />
+          <ScalarProperty Name="Crdby" ColumnName="Crdby" />
+          <ScalarProperty Name="Crd" ColumnName="Crd" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+          <ScalarProperty Name="proId" ColumnName="proId" />
+          <ScalarProperty Name="itemId" ColumnName="itemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customer_Info">
+      <EntityTypeMapping TypeName="ECOMMERCEModel.Customer_Info">
+        <MappingFragment StoreEntitySet="Customer_Info">
+          <ScalarProperty Name="LmdBy" ColumnName="LmdBy" />
+          <ScalarProperty Name="Lmd" ColumnName="Lmd" />
+          <ScalarProperty Name="CrdBy" ColumnName="CrdBy" />
+          <ScalarProperty Name="Crd" ColumnName="Crd" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="mob" ColumnName="mob" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="lname" ColumnName="lname" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+          <ScalarProperty Name="CusId" ColumnName="CusId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mstr_Cus_Add">
+      <EntityTypeMapping TypeName="ECOMMERCEModel.Mstr_Cus_Add">
+        <MappingFragment StoreEntitySet="Mstr_Cus_Add">
+          <ScalarProperty Name="LmdBy" ColumnName="LmdBy" />
+          <ScalarProperty Name="Lmd" ColumnName="Lmd" />
+          <ScalarProperty Name="Crdby" ColumnName="Crdby" />
+          <ScalarProperty Name="Crd" ColumnName="Crd" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="lname" ColumnName="lname" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="add1" ColumnName="add1" />
+          <ScalarProperty Name="add2" ColumnName="add2" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="zip" ColumnName="zip" />
+          <ScalarProperty Name="busi" ColumnName="busi" />
+          <ScalarProperty Name="cusId" ColumnName="cusId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order_Items">
+      <EntityTypeMapping TypeName="ECOMMERCEModel.Order_Items">
+        <MappingFragment StoreEntitySet="Order_Items">
+          <ScalarProperty Name="LmdBy" ColumnName="LmdBy" />
+          <ScalarProperty Name="Lmd" ColumnName="Lmd" />
+          <ScalarProperty Name="Crdby" ColumnName="Crdby" />
+          <ScalarProperty Name="Crd" ColumnName="Crd" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="devicesId" ColumnName="devicesId" />
+          <ScalarProperty Name="proId" ColumnName="proId" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="itemId" ColumnName="itemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order_Tbl">
+      <EntityTypeMapping TypeName="ECOMMERCEModel.Order_Tbl">
+        <MappingFragment StoreEntitySet="Order_Tbl">
+          <ScalarProperty Name="LmdBy" ColumnName="LmdBy" />
+          <ScalarProperty Name="Lmd" ColumnName="Lmd" />
+          <ScalarProperty Name="Crdby" ColumnName="Crdby" />
+          <ScalarProperty Name="Crd" ColumnName="Crd" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+          <ScalarProperty Name="DateTIme" ColumnName="DateTIme" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -1,5 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="ECOMMERCEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CartsItems">
+    <Key>
+      <PropertyRef Name="itemId" />
+    </Key>
+    <Property Name="itemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="proId" Type="int" />
+    <Property Name="devicesId" Type="varchar" MaxLength="100" />
+    <Property Name="qty" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="Crd" Type="datetime" />
+    <Property Name="Crdby" Type="int" />
+    <Property Name="Lmd" Type="datetime" />
+    <Property Name="LmdBy" Type="int" />
+  </EntityType>
+  <EntityType Name="Customer_Info">
+    <Key>
+      <PropertyRef Name="CusId" />
+    </Key>
+    <Property Name="CusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LoginID" Type="int" />
+    <Property Name="fname" Type="varchar" MaxLength="100" />
+    <Property Name="lname" Type="varchar" MaxLength="100" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="mob" Type="varchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="Crd" Type="datetime" />
+    <Property Name="CrdBy" Type="int" />
+    <Property Name="Lmd" Type="datetime" />
+    <Property Name="LmdBy" Type="int" />
+  </EntityType>
   <EntityType Name="Mstr_categories">
     <Key>
       <PropertyRef Name="Id" />
@@ -7,6 +39,28 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Pid" Type="int" />
     <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="Crd" Type="datetime" />
+    <Property Name="Crdby" Type="int" />
+    <Property Name="Lmd" Type="datetime" />
+    <Property Name="LmdBy" Type="int" />
+  </EntityType>
+  <EntityType Name="Mstr_Cus_Add">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cusId" Type="int" />
+    <Property Name="busi" Type="varchar" MaxLength="200" />
+    <Property Name="zip" Type="bigint" />
+    <Property Name="state" Type="varchar" MaxLength="200" />
+    <Property Name="country" Type="varchar" MaxLength="200" />
+    <Property Name="city" Type="varchar" MaxLength="200" />
+    <Property Name="add2" Type="varchar" MaxLength="200" />
+    <Property Name="add1" Type="varchar" MaxLength="200" />
+    <Property Name="fname" Type="varchar" MaxLength="200" />
+    <Property Name="lname" Type="varchar" MaxLength="200" />
     <Property Name="IsActive" Type="bit" />
     <Property Name="IsDelete" Type="bit" />
     <Property Name="Crd" Type="datetime" />
@@ -26,6 +80,41 @@
     <Property Name="IsDeleted" Type="bit" />
     <Property Name="Crd" Type="datetime" />
     <Property Name="CrdBy" Type="int" />
+    <Property Name="Lmd" Type="datetime" />
+    <Property Name="LmdBy" Type="int" />
+  </EntityType>
+  <EntityType Name="Order_Items">
+    <Key>
+      <PropertyRef Name="itemId" />
+    </Key>
+    <Property Name="itemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderID" Type="int" />
+    <Property Name="proId" Type="int" />
+    <Property Name="devicesId" Type="varchar" MaxLength="100" />
+    <Property Name="qty" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="Crd" Type="datetime" />
+    <Property Name="Crdby" Type="int" />
+    <Property Name="Lmd" Type="datetime" />
+    <Property Name="LmdBy" Type="int" />
+  </EntityType>
+  <EntityType Name="Order_Tbl">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Image" Type="varchar" MaxLength="200" />
+    <Property Name="Customer" Type="varchar" MaxLength="100" />
+    <Property Name="DateTIme" Type="datetime" />
+    <Property Name="PaymentMethod" Type="varchar" MaxLength="100" />
+    <Property Name="PaymentStatus" Type="bit" />
+    <Property Name="Amount" Type="bigint" />
+    <Property Name="OrderStatus" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="Crd" Type="datetime" />
+    <Property Name="Crdby" Type="int" />
     <Property Name="Lmd" Type="datetime" />
     <Property Name="LmdBy" Type="int" />
   </EntityType>
@@ -53,8 +142,13 @@
     <Property Name="LmdBy" Type="int" />
   </EntityType>
   <EntityContainer Name="ECOMMERCEModelStoreContainer">
+    <EntitySet Name="CartsItems" EntityType="Self.CartsItems" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer_Info" EntityType="Self.Customer_Info" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Mstr_categories" EntityType="Self.Mstr_categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mstr_Cus_Add" EntityType="Self.Mstr_Cus_Add" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Mstr_Login" EntityType="Self.Mstr_Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order_Items" EntityType="Self.Order_Items" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order_Tbl" EntityType="Self.Order_Tbl" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

@@ -164,6 +164,8 @@ C:\Users\hp\Downloads\NewEcommerc\NewEcommerc\obj\Debug\NewEcommerc.csproj.CoreC
 C:\Users\hp\Downloads\NewEcommerc\NewEcommerc\obj\Debug\NewEcommerc.csproj.CopyComplete
 C:\Users\hp\Downloads\NewEcommerc\NewEcommerc\obj\Debug\NewEcommerc.dll
 C:\Users\hp\Downloads\NewEcommerc\NewEcommerc\obj\Debug\NewEcommerc.pdb
+C:\Users\hp\source\repos\Ecommerce2023Industial\NewEcommerc\NewEcommerc\obj\Debug\NewEcommerc.csproj.CoreCompileInputs.cache
+C:\Users\hp\source\repos\Ecommerce2023Industial\NewEcommerc\NewEcommerc\obj\Debug\NewEcommerc.csproj.AssemblyReference.cache
 C:\Users\hp\source\repos\Ecommerce2023Industial\NewEcommerc\NewEcommerc\bin\NewEcommerc.dll.config
 C:\Users\hp\source\repos\Ecommerce2023Industial\NewEcommerc\NewEcommerc\bin\NewEcommerc.dll
 C:\Users\hp\source\repos\Ecommerce2023Industial\NewEcommerc\NewEcommerc\bin\NewEcommerc.pdb
@@ -242,8 +244,6 @@ C:\Users\hp\source\repos\Ecommerce2023Industial\NewEcommerc\NewEcommerc\bin\Syst
 C:\Users\hp\source\repos\Ecommerce2023Industial\NewEcommerc\NewEcommerc\bin\Newtonsoft.Json.xml
 C:\Users\hp\source\repos\Ecommerce2023Industial\NewEcommerc\NewEcommerc\bin\Antlr3.Runtime.pdb
 C:\Users\hp\source\repos\Ecommerce2023Industial\NewEcommerc\NewEcommerc\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\hp\source\repos\Ecommerce2023Industial\NewEcommerc\NewEcommerc\obj\Debug\NewEcommerc.csproj.AssemblyReference.cache
-C:\Users\hp\source\repos\Ecommerce2023Industial\NewEcommerc\NewEcommerc\obj\Debug\NewEcommerc.csproj.CoreCompileInputs.cache
 C:\Users\hp\source\repos\Ecommerce2023Industial\NewEcommerc\NewEcommerc\obj\Debug\NewEcommerc.csproj.CopyComplete
 C:\Users\hp\source\repos\Ecommerce2023Industial\NewEcommerc\NewEcommerc\obj\Debug\NewEcommerc.dll
 C:\Users\hp\source\repos\Ecommerce2023Industial\NewEcommerc\NewEcommerc\obj\Debug\NewEcommerc.pdb

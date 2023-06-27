@@ -970,7 +970,7 @@
 
                         <!-- col -->
                         <!-- col -->
-            
+
                     </div>
                     <div class="row mt-8">
                         <div class="col">
@@ -1221,14 +1221,54 @@
         $.ajax({
             type: 'post',
             url: '/Home/GetProductBysubcategoryId',
-            data: { ID:id},
+            data: { ID: id },
             success: function (data) {
                 $.each(data, function (i, item) {
-                    $('#progrid').append('<div class="col"><!--card--><div class="card card-product"><div class="card-body"><!--badge--><div class="text-center position-relative"><div class="position-absolute top-0 start-0"><span class="badge bg-danger">Sale</span></div><a href="/Home/shopsingle?PID=' + item.ProId+'"><!--img--><img src="/Content/UserAssets/assets/images/products/product-img-1.jpg"alt="GroceryEcommerceTemplate" class="mb-3 img-fluid"></a><!--actionbtn--><div class="card-product-action"><a href="#!" class="btn-action"data-bs-toggle="modal"data-bs-target="#quickViewModal"><i class="bi bi-eye"data-bs-toggle="tooltip"data-bs-html="true"title="QuickView"></i></a><a href="shop-wishlist.html" class="btn-action"data-bs-toggle="tooltip"data-bs-html="true"title="Wishlist"><i class="bi bi-heart"></i></a><a href="#!" class="btn-action"data-bs-toggle="tooltip"data-bs-html="true"title="Compare"><i class="bi bi-arrow-left-right"></i></a></div></div><!--heading--><div class="text-small mb-1"><a href="#!" class="text-decoration-none  text-muted"><small>' + item.ProSubCat+'</small></a></div><h2 class="fs-6"><a href="shop-single.html" class="text-inherit text-decoration-none">' + item.productName + '</a ></h2 ><div><!--rating--><small class="text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill" ></i > <i class="bi bi-star-fill" ></i > <i class="bi bi-star-fill" ></i > <i class="bi bi-star-half" ></i ></small > <span class="text-muted small" > 4.5(149)</span ></div ><div class="d-flex justify-content-between align-items-center mt-3" ><div><span class="text-dark">₹' + item.price + '</span><span class="text-decoration-line-through text-muted" > ₹240</span ></div ><div><a href="#!" class="btn btn-primary btn-sm" id="' + item.ProId+'"><svg xmlns="http://www.w3.org/2000/svg"width="16"height="16"viewBox="002424"fill="none"stroke="current Color"stroke-width="2"stroke-linecap="round"stroke-line join="round" class="feather feather-plus"><linex1="12"y1="5"x2="12"y2="19"></line><linex1="5"y1 = "12"x2 = "19"y2 = "12" ></line ></svg > Add</a ></div ></div ></div ></div ></div >');
+                    $('#progrid').append('<div class="col"><!--card--><div class="card card-product"><div class="card-body"><!--badge--><div class="text-center position-relative"><div class="position-absolute top-0 start-0"><span class="badge bg-danger">Sale</span></div><a href="/Home/shopsingle?PID=' + item.ProId + '"><!--img--><img src="/Content/UserAssets/assets/images/products/product-img-1.jpg"alt="GroceryEcommerceTemplate" class="mb-3 img-fluid"></a><!--actionbtn--><div class="card-product-action"><a href="#!" class="btn-action"data-bs-toggle="modal"data-bs-target="#quickViewModal"><i class="bi bi-eye"data-bs-toggle="tooltip"data-bs-html="true"title="QuickView"></i></a><a href="shop-wishlist.html" class="btn-action"data-bs-toggle="tooltip"data-bs-html="true"title="Wishlist"><i class="bi bi-heart"></i></a><a href="#!" class="btn-action"data-bs-toggle="tooltip"data-bs-html="true"title="Compare"><i class="bi bi-arrow-left-right"></i></a></div></div><!--heading--><div class="text-small mb-1"><a href="#!" class="text-decoration-none  text-muted"><small>' + item.ProSubCat + '</small></a></div><h2 class="fs-6"><a href="shop-single.html" class="text-inherit text-decoration-none">' + item.productName + '</a ></h2 ><div><!--rating--><small class="text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill" ></i > <i class="bi bi-star-fill" ></i > <i class="bi bi-star-fill" ></i > <i class="bi bi-star-half" ></i ></small > <span class="text-muted small" > 4.5(149)</span ></div ><div class="d-flex justify-content-between align-items-center mt-3" ><div><span class="text-dark">₹' + item.price + '</span><span class="text-decoration-line-through text-muted" > ₹240</span ></div ><div><a onclick="saveCartItem(this)" class="btn btn-primary btn-sm cartitem" id="' + item.ProId + '"><input type="hidden" value="' + item.ProId + '" class="proid"/> Add</a ></div ></div ></div ></div ></div >');
                 })
             }
 
         })
     }
+
+    function saveCartItem(tr) {
+        var pid = tr.childNodes[0].value;
+        var d1 = new Date();
+        var fp = new Fingerprint2();
+        fp.get(function (result) {
+            var d2 = new Date();
+            var timeString = "Time took to calculate the fingerprint: " + (d2 - d1) + "ms";
+            if (typeof window.console !== "undefined") {
+                console.log(timeString);
+                console.log(result);
+            }
+           
+            $.ajax({
+                type: 'post',
+                url: '/Home/SaveCartItem',
+                data: { DId: result, Pid: pid },
+                success: function (data) {
+                    getcartcount();
+                        
+                    if (data) {
+                        Swal.fire(
+                            'Product Saved!',
+                            'Product is ready to display',
+                            'success'
+                        )
+                    }
+                    else {
+                        Swal.fire(
+                            'Good job!',
+                            'You clicked the button!',
+                            'error'
+                        )
+                    }
+                }
+            });
+           
+        });
+    }
 </script>
+
 

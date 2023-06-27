@@ -11,6 +11,9 @@
     <link href="~/Content/UserAssets/assets/libs/tiny-slider/dist/tiny-slider.css" rel="stylesheet">
     <link href="~/Content/UserAssets/assets/libs/slick-carousel/slick/slick.css" rel="stylesheet">
     <link href="~/Content/UserAssets/assets/libs/slick-carousel/slick/slick-theme.css" rel="stylesheet">
+    <link href="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.8/dist/sweetalert2.min.css
+" rel="stylesheet">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -197,7 +200,7 @@
                                                 </li>
                                             </ul>
                                             <div class="mt-2 d-grid">
-                                                <a href="#" class="btn btn-primary">Checkout</a>
+                                                <a href="/Home/Checkout" class="btn btn-primary">Checkout</a>
                                                 <a href="#" class="btn btn-light mt-2">View Cart</a>
                                             </div>
 
@@ -255,97 +258,26 @@
                                         </svg>
                                     </span>
 
-                                    <span>$0.00</span>
+                                    <span class="badge bg-danger" id="cartcount">0</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg p-5">
                                     <div class="d-flex justify-content-between align-items-center border-bottom pb-5">
                                         <div>
                                             <span><i class="feather-icon icon-shopping-cart"></i></span>
-                                            <span class="text-success">3</span>
+                                            <span class="text-success" id="cartcount1">0</span>
 
                                         </div>
                                         <div>
                                             <span>Total:</span>
-                                            <span class="text-success">$105.00</span>
+                                            <span class="text-success" id="alertprice"></span>
 
                                         </div>
                                     </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item px-0 py-3">
-                                            <div class="row align-items-center g-0">
-                                                <div class="col-lg-3 text-center">
-                                                    <!-- img --> <img src="~/Content/UserAssets/assets/images/products/product-img-1.jpg" alt="Ecommerce"
-                                                                      class="icon-xxl">
-                                                </div>
-                                                <div class="col-lg-7">
-                                                    <!-- title -->
-                                                    <a href="shop-single.html" class="text-inherit">
-                                                        <h6 class="mb-0">Haldiram's Sev Bhujia</h6>
-
-                                                    </a>
-                                                    <small class="text-muted">1 x $35.00</small>
-
-                                                </div>
-
-                                                <!-- price -->
-                                                <div class="text-end col-lg-2">
-                                                    <a href="#" class="text-inherit" aria-label="Close"><i class="bi bi-x fs-4"></i></a>
-
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item px-0 py-3">
-                                            <div class="row align-items-center g-0">
-                                                <div class="col-lg-3 text-center">
-                                                    <!-- img --> <img src="~/Content/UserAssets/assets/images/products/product-img-2.jpg" alt="Ecommerce"
-                                                                      class="icon-xxl">
-                                                </div>
-                                                <div class="col-lg-7">
-                                                    <!-- title -->
-                                                    <a href="shop-single.html" class="text-inherit">
-                                                        <h6 class="mb-0">NutriChoice Digestive</h6>
-
-                                                    </a>
-                                                    <small class="text-muted">1 x $29.00</small>
-
-                                                </div>
-
-                                                <!-- price -->
-                                                <div class="text-end col-lg-2">
-                                                    <a href="#" class="text-inherit" aria-label="Close"><i class="bi bi-x fs-4"></i></a>
-
-                                                </div>
-                                            </div>
-
-                                        </li>
-
-                                        <li class="list-group-item px-0 py-3">
-                                            <div class="row align-items-center g-0">
-                                                <div class="col-lg-3 text-center">
-                                                    <!-- img --> <img src="~/Content/UserAssets/assets/images/products/product-img-3.jpg" alt="Ecommerce"
-                                                                      class="icon-xxl">
-                                                </div>
-                                                <div class="col-lg-7">
-                                                    <!-- title -->
-                                                    <a href="shop-single.html" class="text-inherit">
-                                                        <h6 class="mb-0 ">Cadbury 5 Star Chocolate</h6>
-
-                                                    </a>
-                                                    <small class="text-muted">1 x $29.00</small>
-
-                                                </div>
-
-                                                <!-- price -->
-                                                <div class="text-end col-lg-2">
-                                                    <a href="#" class="text-inherit" aria-label="Close"><i class="bi bi-x fs-4"></i></a>
-
-                                                </div>
-                                            </div>
-
-                                        </li>
+                                    <ul class="list-group list-group-flush" id="cartalertItems">
+                                       
                                     </ul>
                                     <div class="mt-2 d-grid">
-                                        <a href="#" class="btn btn-primary">Checkout</a>
+                                        <a href="/Home/Checkout" class="btn btn-primary">Checkout</a>
                                         <a href="#" class="btn btn-light mt-2">View Cart</a>
                                     </div>
 
@@ -354,9 +286,24 @@
                         </div>
                         <div class="list-inline-item">
 
-                            <a href="signin.html" class="btn btn-dark d-none d-xl-block">
-                                Sign In
-                            </a>
+                            @{
+                                if (Session["LoginDeatails"] != null)
+                                {
+                                    Customer_Info ss = (Customer_Info)Session["LoginDeatails"];
+
+                                            <a href="#" class="d-none d-xl-block">
+                                      @ss.fname
+                                    </a>
+                                    <input type="hidden" id="cusid" value="@ss.CusId" />
+                                }
+                                else
+                                {
+                                    <a href="signin.html" class="btn btn-dark d-none d-xl-block">
+                                        Sign In
+                                    </a>
+                                }
+                            }
+
 
                         </div>
 
@@ -972,7 +919,7 @@
                             </li>
                         </ul>
                     </li>
-                   
+
                 </ul>
             </div>
         </div>
@@ -1496,7 +1443,7 @@
                             {
                                 <li class="nav-item dropdown dropdown-fullwidth">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                       @item.Name
+                                        @item.Name
                                     </a>
                                     <div class=" dropdown-menu pb-0">
 
@@ -1504,19 +1451,19 @@
                                             @{
                                                 foreach (var cat in maindate.GetAllCategoriesByPId(item.Id))
                                                 {
-                                                                                        <div class="col-lg-3 col-6 mb-4 mb-lg-0">
-                                                                                            <h6 class="text-primary ps-3">@cat.Name</h6>
-                                                                                            @{
-                                     foreach (var sub in maindate.GetAllCategoriesByPId(cat.Id))
-                                          {
+                                                    <div class="col-lg-3 col-6 mb-4 mb-lg-0">
+                                                        <h6 class="text-primary ps-3">@cat.Name</h6>
+                                                        @{
+                                                            foreach (var sub in maindate.GetAllCategoriesByPId(cat.Id))
+                                                            {
 
-                          <a class="dropdown-item" href="/Home/ProductsGrid?subId=@sub.Id">@sub.Name</a>
-                                 }
-                               }
+                                                                <a class="dropdown-item" href="/Home/ProductsGrid?subId=@sub.Id">@sub.Name</a>
+                                                            }
+                                                        }
 
-                                                                                        </div>
-                                                    }
+                                                    </div>
                                                 }
+                                            }
 
 
                                             <div class="col-lg-3 col-12 mb-4 mb-lg-0">
@@ -1967,6 +1914,7 @@
                             </li>
                         </ul>
                     </div>
+                    
 
                 </div>
 
@@ -1975,6 +1923,7 @@
         </div>
     </footer>
     <!-- Javascript-->
+    <script src="~/Content/UserAssets/assets/js/fingerprint2.js"></script>
     <!-- Libs JS -->
     <script src="~/Content/UserAssets/assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="~/Content/UserAssets/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -1988,7 +1937,112 @@
     <script src="~/Content/UserAssets/assets/js/vendors/tns-slider.js"></script>
     <script src="~/Content/UserAssets/assets/js/vendors/zoom.js"></script>
     <script src="~/Content/UserAssets/assets/js/vendors/increment-value.js"></script>
+    <script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.8/dist/sweetalert2.all.min.js
+"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            getcartcount();
+
+        });
+        function getFingerprint() {
+            var d1 = new Date();
+            var fp = new Fingerprint2();
+            fp.get(function (result) {
+                var d2 = new Date();
+                var timeString = "Time took to calculate the fingerprint: " + (d2 - d1) + "ms";
+                if (typeof window.console !== "undefined") {
+                    console.log(timeString);
+                    console.log(result);
+                }
+                
+                return result;
+            });
+        }
+
+        function getcartcount() {
+
+            var d1 = new Date();
+            var fp = new Fingerprint2();
+            fp.get(function (result) {
+                var d2 = new Date();
+                var timeString = "Time took to calculate the fingerprint: " + (d2 - d1) + "ms";
+                if (typeof window.console !== "undefined") {
+                    console.log(timeString);
+                    console.log(result);
+                    $.ajax({
+                        type: 'post',
+                        url: '/Home/GetCartItemsCounts',
+                        data: { DeviceId: result },
+                        success: function (data) {
+                            getCartItems(result);
+                            $('#cartcount').text(data)
+                            $('#cartcount1').text(data)
+                        }
+                    });
+                }
+
+            });
+           
+        }
+
+        function getCartItems(DId) {
+            $.ajax({
+                type: 'post',
+                url: '/Home/GetCartItems',
+                data: { DeviceId: DId },
+                success: function (data) {
+                    var total = 00;
+                    $('#cartalertItems').text('')
+                    $.each(data, function (i, item) {
+                        total += Number(item.price);
+                        var img ;
+                        if (item.Images != null && item.Images != '') {
+                            var img = item.Images.split(",");
+
+                            $('#cartalertItems').append('<li class="list-group-item px-0 py-3"><div class= "row align-items-center g-0" ><div class="col-lg-3 text-center"><!-- img --> <img src="/Uploads/' + img[0] + '" alt="Ecommerce" class="icon-xxl"></div><div class="col-lg-7"><!-- title --><a href="shop-single.html" class="text-inherit"><h6 class="mb-0">' + item.productName + '</h6></a><small class="text-muted">1 x ₹' + item.price + '</small></div><!-- price --><div class="text-end col-lg-2" id="card' + item.ProId + '"><a href="#" class="text-inherit" aria-label="Close"><i class="bi bi-x fs-4" onclick="deletealertitem(' + item.ProId +')"></i></a></div> </div> </li >');
+                        }
+                        else {
+
+                            $('#cartalertItems').append('<li class="list-group-item px-0 py-3"><div class= "row align-items-center g-0" ><div class="col-lg-3 text-center"><!-- img --> <img src="https://freshcart.codescandy.com/assets/images/stores-logo/stores-logo-2.svg" alt="Ecommerce" class="icon-xxl"></div><div class="col-lg-7"><!-- title --><a href="shop-single.html" class="text-inherit"><h6 class="mb-0">' + item.productName + '</h6></a><small class="text-muted">1 x ₹' + item.price + '</small></div><!-- price --><div class="text-end col-lg-2" id="card'+item.ProId+'"><a href="#" class="text-inherit" aria-label="Close"><i class="bi bi-x fs-4" onclick="deletealertitem(' + item.ProId+')"></i></a></div> </div> </li >');
+                        }
+                    
+                   
+                    })
+
+                    $('#alertprice').text('₹' + total);
+                }
+            });
+                        }
+
+                        function deletealertitem(itemID) {
+                            document.getElementById('card' + itemID).innerHTML = '<div class="spinner-border text-danger" role="status"><span class="sr-only" ></span></div >';
+                            var d1 = new Date();
+                            var fp = new Fingerprint2();
+                            fp.get(function (result) {
+                                var d2 = new Date();
+                                var timeString = "Time took to calculate the fingerprint: " + (d2 - d1) + "ms";
+                                if (typeof window.console !== "undefined") {
+                                    console.log(timeString);
+                                    console.log(result);
+                                    $.ajax({
+                                        type: 'post',
+                                        url: '/Home/deletealertitem',
+                                        data: { DeviceId: result, proId: itemID},
+                                        success: function (data) {
+                                            getCartItems(result);
+                                          
+                                        }
+                                    });
+                                }
+
+                            });
+                        }
+    </script>
 </body>
+
 
 <!-- Mirrored from freshcart.codescandy.com/pages/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 May 2023 10:38:13 GMT -->
 </html>

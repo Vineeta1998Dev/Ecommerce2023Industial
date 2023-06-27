@@ -170,6 +170,53 @@ namespace NewEcommerc.Controllers
             {
                 return Json("No files selected.");
             }
+
+        }
+
+        public  ActionResult neworder()
+        {
+            //OrderStatus plased =1
+            List<Order_Tbl> neworder = db.Order_Tbl.Where(x => x.OrderStatus == 1 && x.IsActive == true && x.IsDelete == false).ToList();
+            return View(neworder);
+        }
+        public ActionResult confirmorder()
+        {
+            //OrderStatus Confirm =2
+            List<Order_Tbl> neworder = db.Order_Tbl.Where(x => x.OrderStatus == 2 && x.IsActive == true && x.IsDelete == false).ToList();
+            return View(neworder);
+        }
+        public ActionResult shippedorder()
+        {
+            //OrderStatus shipped =3
+            List<Order_Tbl> neworder = db.Order_Tbl.Where(x => x.OrderStatus == 3 && x.IsActive == true && x.IsDelete == false).ToList();
+            return View(neworder);
+        }
+        public ActionResult deleverdorder()
+        {
+            //OrderStatus deleverd =4
+            List<Order_Tbl> neworder = db.Order_Tbl.Where(x => x.OrderStatus ==4 && x.IsActive == true && x.IsDelete == false).ToList();
+            return View(neworder);
+        }
+
+        public JsonResult changeOrderstatus(int Orderid,int status)
+        {
+            Order_Tbl order = db.Order_Tbl.Where(x => x.OrderID == Orderid).FirstOrDefault();
+            order.OrderStatus = status;
+            db.SaveChanges();
+            return Json(JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GenerateInvoic(int ordId)
+        {
+         
+            Order_Tbl order = db.Order_Tbl.Where(x => x.OrderID == ordId).FirstOrDefault();
+            int cusid = int.Parse(order.Customer);
+            List<Order_Items> itemlst = db.Order_Items.Where(x => x.OrderID == order.OrderID).ToList();
+            int?[] ids = db.Order_Items.Where(x => x.OrderID == order.OrderID).Select(x => x.proId).ToArray();
+            List<Product> prolst = db.Products.Where(x => ids.Contains(x.ProId)).ToList();
+            Mstr_Cus_Add add = db.Mstr_Cus_Add.Where(x => x.cusId == cusid && x.IsActive==true).FirstOrDefault();
+            Tuple<Order_Tbl, List<Product>, Mstr_Cus_Add> obj = new Tuple<Order_Tbl, List<Product>, Mstr_Cus_Add>(order, prolst, add);
+            return View(obj);
         }
     }
 }

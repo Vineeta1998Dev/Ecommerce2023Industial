@@ -28,5 +28,10 @@ namespace NewEcommerc.Models
         public virtual DbSet<Mstr_Login> Mstr_Login { get; set; }
         public virtual DbSet<Mstr_categories> Mstr_categories { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<CartsItem> CartsItems { get; set; }
+        public virtual DbSet<Customer_Info> Customer_Info { get; set; }
+        public virtual DbSet<Mstr_Cus_Add> Mstr_Cus_Add { get; set; }
+        public virtual DbSet<Order_Items> Order_Items { get; set; }
+        public virtual DbSet<Order_Tbl> Order_Tbl { get; set; }
     }
 }

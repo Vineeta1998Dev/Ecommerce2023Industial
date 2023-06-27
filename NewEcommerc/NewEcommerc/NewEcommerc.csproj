@@ -136,6 +136,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartsItem.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer_Info.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Filter.cs" />
     <Compile Include="Models\MainPageData.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -155,7 +162,16 @@
     <Compile Include="Models\Mstr_categories.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Mstr_Cus_Add.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Mstr_Login.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order_Items.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order_Tbl.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
@@ -483,6 +499,8 @@
     <Content Include="Content\UserAssets\assets\images\slider\slider-image-1.jpg" />
     <Content Include="Content\UserAssets\assets\images\slider\slider-image-2.jpg" />
     <Content Include="Content\UserAssets\assets\images\slider\slider-image-3.jpg" />
+    <Content Include="Content\UserAssets\assets\images\success.gif" />
+    <Content Include="Content\UserAssets\assets\js\fingerprint2.js" />
     <Content Include="Content\UserAssets\assets\js\theme.min.js" />
     <Content Include="Content\UserAssets\assets\js\vendors\increment-value.js" />
     <Content Include="Content\UserAssets\assets\js\vendors\inputmask.js" />
@@ -665,6 +683,16 @@
     <Content Include="Views\Admin\productlist.cshtml" />
     <Content Include="Views\Home\ProductsGrid.cshtml" />
     <Content Include="Views\Home\shopsingle.cshtml" />
+    <Content Include="Views\Home\Checkout.cshtml" />
+    <Content Include="Views\Home\SignUP.cshtml" />
+    <Content Include="Views\Home\SignIN.cshtml" />
+    <Content Include="Views\Home\PlacedOrder.cshtml" />
+    <Content Include="Views\Admin\neworder.cshtml" />
+    <Content Include="Views\Admin\confirmorder.cshtml" />
+    <Content Include="Views\Admin\shippedorder.cshtml" />
+    <Content Include="Views\Admin\deleverdorder.cshtml" />
+    <Content Include="Views\Admin\GenerateInvoic.cshtml" />
+    <Content Include="Views\Home\MyOrder.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
